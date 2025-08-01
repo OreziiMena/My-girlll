@@ -1,0 +1,145 @@
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Woman</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ffebee;
+            text-align: center;
+            padding: 0;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #d81b60;
+        }
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 20px;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        button {
+            background-color: #d81b60;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            background-color: #ad1457;
+            transform: scale(1.05);
+        }
+        #epistle {
+            text-align: left;
+            line-height: 1.6;
+        }
+        .heart {
+            color: #d81b60;
+            font-size: 1.5em;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <div id="page1" class="container">
+        <h1>Happy Girlfriend's Day, Mamaaaaa <span class="heart">❤️</span></h1>
+        <p>You mean the world to me...</p>
+        <button onclick="nextPage()">Click to see more</button>
+    </div>
+
+    <div id="page2" class="container" style="display: none;">
+        <h1>I miss you, love...</h1>
+        <p>Do you miss me?</p>
+        <button onclick="nextPage()">Let me tell you</button>
+    </div>
+
+    <div id="page3" class="container" style="display: none;">
+        <h1>Well...?</h1>
+        <p>Do you miss me too?</p>
+        <div class="buttons">
+            <button onclick="showEpistle()">Yes</button>
+            <button onclick="wrongAnswer()">No</button>
+        </div>
+    </div>
+
+    <div id="epistlePage" class="container" style="display: none;">
+        <div id="epistle">
+            <h1>To my girll <span class="heart">❤️</span></h1>
+            <p>Hey mama</p>
+            <p>Happy girlfriend's day my love..Every moment away from you feels like an eternity. My heart aches for your smile, your laugh, the way your eyes light up when you're happy...Tbh if I can...I wish I could live inside you</p>
+            <p>You are my sunshine on cloudy days, my peace in times of chaos, my strength when I feel weak. I love you more than words could ever express and I hope you know that.</p>
+            <p>From the way you say my name to the little things you do without thinking - everything about you makes my life better. You've turned ordinary days into adventures and simple moments into cherished memories.</p>
+            <p>I promise to keep choosing you every single day, to be your safe place , your biggest fan, and your partner. No matter what comes our way, I'll always love you mama.</p>
+            
+            <p>From your tall baby...Bambi</p>
+        </div>
+        <button onclick="restart()">Read again?</button>
+    </div>
+
+    <div id="wrongPage" class="container" style="display: none;">
+        <h1>Wrong answer... <span class="heart">❤️</span></h1>
+        <p>Let's try that again, love</p>
+        <button onclick="backToQuestion()">Okay, I'll choose better</button>
+    </div>
+
+    <script>
+        let currentPage = 1;
+        
+        function nextPage() {
+            document.getElementById(`page${currentPage}`).style.display = 'none';
+            currentPage++;
+            document.getElementById(`page${currentPage}`).style.display = 'block';
+        }
+        
+        function showEpistle() {
+            document.getElementById('page3').style.display = 'none';
+            document.getElementById('epistlePage').style.display = 'block';
+        }
+        
+        function wrongAnswer() {
+            document.getElementById('page3').style.display = 'none';
+            document.getElementById('wrongPage').style.display = 'block';
+        }
+        
+        function backToQuestion() {
+            document.getElementById('wrongPage').style.display = 'none';
+            document.getElementById('page3').style.display = 'block';
+        }
+        
+        function restart() {
+            document.getElementById('epistlePage').style.display = 'none';
+            currentPage = 1;
+            document.getElementById('page1').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
